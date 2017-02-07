@@ -1,52 +1,69 @@
 ﻿@model IEnumerable<ShoppingCart.Models.Entities.Item>
-@{ 
-    ViewBag.Title = "Equipment Loans";
+@{
+    ViewBag.Title = "Loan Equipment";
 }
-<h2>Index</h2>
-
-<table class="table table-striped">
-    <tr>
-        <th>
-            Item
-        </th>
-        <th>
-            Description
-        </th>
-        <th>
-            Owned
-        </th>
-        <th>
-            In Stock
-        </th>
-        <th>
-            Loaned
-        </th>
-        <th>
-            Available (y/n)
-        </th>
-        <th></th>
-    </tr>
-@foreach(var item in Model)
+<h2>Loan Equipment</h2>
+<h4>@ViewBag.Test</h4>
+@using (Html.BeginForm("AddToCart", "LoanController"))
 {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.item_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.item_descr)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.quantityOwned)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.quantityInstock)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.quantityLoaned)
-        </td>
-        <td>
-            @Html.EditorFor(x => item.availableToLoan, new { htmlAttributes = new { @disabled = "true" } })
-        </td>
-    </tr>
+    <table class="table table-striped">
+        <tr>
+            <th>
+                Item
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Owned
+            </th>
+            <th>
+                In Stock
+            </th>
+            <th>
+                Loaned
+            </th>
+            <th>
+                Available (y/n)
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.item_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.item_descr)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.quantityOwned)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.quantityInstock)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.quantityLoaned)
+                </td>
+                <td>
+                    @Html.EditorFor(x => item.availableToLoan, new { htmlAttributes = new { @disabled = "true" } })
+                </td>
+                <td>
+                    <form class="form-inline">
+                        @Html.Hidden("item", item.item_id)
+                        @Html.TextBox("qty", null, new { @style = "width:70px", @class = "form-control" })
+                        <button class="btn btn-default"><span class="glyphicon glyphicon-plus" /></button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
 }
-</table>
+<div class="row col-lg-12 col-md-12 clearfix">
+    <button class="btn btn-primary pull-right">
+        @Html.ActionLink("View / Edit", "Edit")
+        <span class="glyphicon glyphicon-shopping-cart"></span>
+        <span class="badge">@ViewBag.CartCount Item(s)</span>
+    </button>
+</div>
