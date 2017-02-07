@@ -1,4 +1,52 @@
-﻿@{ 
+﻿@model IEnumerable<ShoppingCart.Models.Entities.Item>
+@{ 
     ViewBag.Title = "Equipment Loans";
 }
 <h2>Index</h2>
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            Item
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Owned
+        </th>
+        <th>
+            In Stock
+        </th>
+        <th>
+            Loaned
+        </th>
+        <th>
+            Available (y/n)
+        </th>
+        <th></th>
+    </tr>
+@foreach(var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.item_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.item_descr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.quantityOwned)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.quantityInstock)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.quantityLoaned)
+        </td>
+        <td>
+            @Html.EditorFor(x => item.availableToLoan, new { htmlAttributes = new { @disabled = "true" } })
+        </td>
+    </tr>
+}
+</table>

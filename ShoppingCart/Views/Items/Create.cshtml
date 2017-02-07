@@ -16,7 +16,7 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.item_name, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.item_name, "Item", htmlAttributes: new { @class = "control-label col-md-2", @value = "Item"})
             <div class="col-md-10">
                 @Html.EditorFor(model => model.item_name, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.item_name, "", new { @class = "text-danger" })
@@ -24,7 +24,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.item_descr, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.item_descr, "Description", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.item_descr, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.item_descr, "", new { @class = "text-danger" })
@@ -32,7 +32,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.quantityOwned, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.quantityOwned, "Quantity Owned", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.quantityOwned, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.quantityOwned, "", new { @class = "text-danger" })
@@ -40,7 +40,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.quantityInstock, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.quantityInstock, "In Stock", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.quantityInstock, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.quantityInstock, "", new { @class = "text-danger" })
@@ -48,7 +48,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.quantityLoaned, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.quantityLoaned, "Amount Loaned", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.quantityLoaned, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.quantityLoaned, "", new { @class = "text-danger" })
@@ -56,11 +56,11 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.availableToLoan, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.availableToLoan, "Available to Loan", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
                     @Html.EditorFor(model => model.availableToLoan)
-                    @Html.ValidationMessageFor(model => model.availableToLoan, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(model => model.availableToLoan, "check yes", new { @class = "text-danger" })
                 </div>
             </div>
         </div>

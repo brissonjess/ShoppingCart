@@ -1,4 +1,5 @@
-﻿@model IEnumerable<ShoppingCart.Models.Entities.Item>
+﻿
+@model IEnumerable<ShoppingCart.Models.Entities.Item>
 
 @{
     ViewBag.Title = "Index";
@@ -12,22 +13,22 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.item_name)
+            Item
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.item_descr)
+            Description
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.quantityOwned)
+            Owned
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.quantityInstock)
+            In Stock
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.quantityLoaned)
+            Loaned
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.availableToLoan)
+            Available (y/n)
         </th>
         <th></th>
     </tr>
@@ -50,7 +51,7 @@
             @Html.DisplayFor(modelItem => item.quantityLoaned)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.availableToLoan)
+            @Html.EditorFor(x => item.availableToLoan, new { htmlAttributes = new { @disabled = "true" } })
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.item_id }) |
